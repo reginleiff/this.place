@@ -26,13 +26,10 @@ public class DisintegratePlugin : BlockPlugin, IDisplaceable
 
     public override void OnFaceClick (BlockFace face)
     {
-        if (!_isDisplaced && face != BlockFace.Top)
+        if (_block.MoveBlock(face))
         {
-            if (_block.MoveBlock(face))
-            {
-                _isDisplaced = true;
-                _directionOfTravel = face.GetOppositeFace();
-            }
+            _isDisplaced = true;
+            _directionOfTravel = face.GetOppositeFace();
         }
 
         _animator.SetTrigger("BlockPulled");

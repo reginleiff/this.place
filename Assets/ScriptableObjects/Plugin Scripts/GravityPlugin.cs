@@ -9,6 +9,12 @@ public class GravityPlugin : BlockPlugin
     public float TerminalSpeed = 10f;
     private const float _acceleration = 5f;
 
+    public override void Plug(BlockBehaviour block)
+    {
+        _block = block;
+        _block.SetBoundByGravity();
+    }
+
     public override void OnUpdate()
     {
         if (!_block.IsTranslating())
