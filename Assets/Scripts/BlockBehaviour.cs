@@ -13,11 +13,12 @@ public class BlockBehaviour : MonoBehaviour
     public float SkinToLengthRatio = 0.1f;
     public float InitialSpeed = 1f;
     public ITransparentRenderer TransparentRenderer;
-
+    
     private Vector3 _targetPosition;
     private float _currentSpeed;
     private float _acceleration;
 
+    private bool _boundByGravity;
     private bool _isTranslating;
     private bool _isPlayerStandingOn;
     private BlockFace _lastClickedFace;
@@ -194,5 +195,15 @@ public class BlockBehaviour : MonoBehaviour
         {
             displacementSound.Play();
         }
+    }
+
+    public void SetBoundByGravity()
+    {
+        _boundByGravity = true;
+    }
+
+    public bool IsBoundByGravity()
+    {
+        return _boundByGravity;
     }
 }
