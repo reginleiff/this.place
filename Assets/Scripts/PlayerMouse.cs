@@ -60,7 +60,9 @@ public class PlayerMouse : MonoBehaviour
         if (didRayCastHit)
         {
             BlockFaceBehaviour blockFace = hit.transform.gameObject.GetComponent<BlockFaceBehaviour>();
+            BlockBehaviour block = hit.transform.gameObject.GetComponent<BlockBehaviour>();
             if (blockFace == null) return;
+            if (block.IsBoundByGravity()) return;
             BlockFace face = BlockFaceMethods.BlockFaceFromNormal(hit.normal);
             if (_faceMap.ContainsKey(blockFace) && _faceMap[blockFace].ClickableFace == face)
             {
@@ -99,6 +101,8 @@ public class PlayerMouse : MonoBehaviour
                 IDisplaceable displaceable = plugin as IDisplaceable;
 
                 if (displaceable == null || !displaceable.DisplaceableInFaceDirection(blockFaceOfNeighbouringBlock)) continue;
+
+                if (blockBehaviour.IsBoundByGravity() && blockFaceOfNeighbouringBlock == BlockFace.Top) continue;
 
                 blockFaceBehaviour.HighlightFace(blockFaceOfNeighbouringBlock);
                 Vector3 moveDirection = displaceable.GetDisplaceDirection(blockFaceOfNeighbouringBlock);
