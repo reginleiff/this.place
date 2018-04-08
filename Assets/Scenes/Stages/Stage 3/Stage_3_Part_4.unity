@@ -24621,7 +24621,7 @@ Prefab:
     - target: {fileID: 114808459760470876, guid: b5cbb8963e500b246a5063aee1cc6a1c,
         type: 2}
       propertyPath: SceneName
-      value: Stage_3
+      value: Stage_3_Part_4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5cbb8963e500b246a5063aee1cc6a1c, type: 2}
